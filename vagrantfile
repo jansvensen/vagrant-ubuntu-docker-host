@@ -1,0 +1,62 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_HOME'] = 'D:/VMware-VMs/vagrant'
+ENV['VAGRANT_VMWARE_CLONE_DIRECTORY'] = 'D:/VMware-VMs/vagrant'
+
+Vagrant.configure("2") do |config|
+
+    config.vm.define "dockerhost" do |dockerhost|
+        dockerhost.vm.box =  "generic/ubuntu2104"
+        
+        dockerhost.vm.provider "vmware_desktop" do |v, override|
+            v.gui = true
+            v.linked_clone = false
+            v.vmx["memsize"] = "8192"
+            v.vmx["numvcpus"] = "4"
+        end
+    
+        dockerhost.vm.provision:shell, inline: <<-SHELL
+            echo "root:rootroot" | sudo chpasswd
+            sudo timedatectl set-timezone Europe/Berlin
+        SHELL
+    
+        dockerhost.vm.define "dockerhost" do |ubuntu|
+            ubuntu.vm.hostname = "dockerhost"
+        end
+
+        # Full upgrade
+        dockerhost.vm.provision :shell, inline: "sudo apt update -y && sudo apt upgrade -y"
+        dockerhost.vm.provision :shell, inline: "sudo apt autoremove --purge -y"
+        dockerhost.vm.provision :shell, inline: "sudo reboot"
+        
+        # Full upgrade
+        dockerhost.vm.provision :shell, inline: "sudo apt update -y && sudo apt upgrade -y"
+        dockerhost.vm.provision :shell, inline: "sudo apt autoremove --purge -y"
+        dockerhost.vm.provision :shell, inline: "sudo reboot"
+
+        # dockerhost.vm.provision:shell, path: "../ubuntu/configure-base.sh"
+    
+        # Configure firewall
+        dockerhost.vm.provision :shell, inline: "sudo ufw allow 22/tcp"
+        dockerhost.vm.provision :shell, inline: "sudo ufw allow 9200/tcp"
+        dockerhost.vm.provision :shell, inline: "sudo ufw allow 5601/tcp"
+       
+        # Install VMware tools
+        dockerhost.vm.provision :shell, inline: "sudo apt install open-vm-tools -y -qq"
+
+        # Install GIT
+        dockerhost.vm.provision :shell, inline: "sudo apt install GIT -y -qq"    
+
+        # Reboot
+        dockerhost.vm.provision :shell, inline: "sudo reboot"
+
+        # Install Docker
+        dockerhost.vm.provision :shell, :path => "./install-docker.sh"
+
+        # Create Containers
+       # dockerhost.vm.provision :shell, :path => "./create-comtainers.sh"
+        
+    end
+
+end
