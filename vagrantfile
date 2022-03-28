@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
         dockerhost.vm.provision :shell, :path => "./install-docker.sh"
 
         # Create Containers
-       # dockerhost.vm.provision :shell, :path => "./create-comtainers.sh"
+        dockerhost.vm.provision :shell, :path => "./create-containers.sh"
         
     end
 
