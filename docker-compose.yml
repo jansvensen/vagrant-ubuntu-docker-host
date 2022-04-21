@@ -1,12 +1,38 @@
-version: "2.2"
+version: '2.2'
+
 services:
+
+  # elkstack
+  elkstack:
+    container_name: elkstack
+    image: sebp/elk
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      #- "5044:5044"
+
+  # splunk
+  splunk:
+    container_name: splunk
+    image: splunk/splunk
+    ports:
+      - "8000:8000"
+      - "8088:8088"
+    environment:
+      SPLUNK_PASSWORD: "ThisIsMyMagicPassword"
+      SPLUNK_START_ARGS: "--accept-license"
+
+  # mongodb
   mongodb:
+    container_name: mongodb
     image: "mongo:5.0"
     volumes:
       - "mongodb_data:/data/db"
     restart: "on-failure"
 
+  # elasticsearch
   elasticsearch:
+    container_name: elasticsearch
     environment:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g -Dlog4j2.formatMsgNoLookups=true"
       bootstrap.memory_lock: "true"
@@ -22,7 +48,9 @@ services:
       - "es_data:/usr/share/elasticsearch/data"
     restart: "on-failure"
 
+  # graylog
   graylog:
+    container_name: graylog
     image: "graylog/graylog-enterprise:4.2"
     depends_on:
       elasticsearch:
@@ -56,6 +84,7 @@ services:
       - "graylog_journal:/usr/share/graylog/data/journal"
     restart: "on-failure"
 
+# volumes    
 volumes:
   mongodb_data:
   es_data:
