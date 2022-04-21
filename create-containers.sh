@@ -14,10 +14,10 @@ sudo git clone https://github.com/jansvensen/vagrant-ubuntu-docker-host.git
 cd /vagrant-ubuntu-docker-host
 
 # Remove existing containers
-docker-compose rm --stop --force
+sudo docker-compose rm --stop --force
 
 # Pull required images
-docker pull sebp/elk
-docker pull splunk/splunk
+sudo docker pull sebp/elk
+sudo docker pull splunk/splunk
 
-docker-compose -f /srv/vagrant-ubuntu-docker-host/docker-compose.yml up -d
+sudo docker-compose -f /srv/vagrant-ubuntu-docker-host/docker-compose.yml up -d
