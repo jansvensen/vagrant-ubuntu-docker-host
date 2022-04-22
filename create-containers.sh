@@ -16,8 +16,5 @@ cd /vagrant-ubuntu-docker-host
 # Remove existing containers
 sudo docker-compose rm --stop --force
 
-# Pull required images
-sudo docker pull sebp/elk
-sudo docker pull splunk/splunk
-
+# Create Docker containers
 sudo docker-compose -f /srv/vagrant-ubuntu-docker-host/docker-compose.yml up -d
