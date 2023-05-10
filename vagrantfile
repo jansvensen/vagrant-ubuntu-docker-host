@@ -7,7 +7,7 @@ ENV['VAGRANT_VMWARE_CLONE_DIRECTORY'] = 'D:/VMware-VMs/vagrant'
 Vagrant.configure("2") do |config|
 
     config.vm.define "dockerhost" do |dockerhost|
-        dockerhost.vm.box =  "generic/ubuntu2104"
+        dockerhost.vm.box =  "generic/ubuntu2210"
         
         dockerhost.vm.provider "vmware_desktop" do |v, override|
             v.gui = true
