@@ -2,14 +2,6 @@ version: '2.2'
 
 services:
 
-  # elkstack
-  elkstack:
-    container_name: elkstack
-    image: sebp/elk
-    ports:
-      - "5601:5601"
-      - "9200:9200"
-
   # splunk
   splunk:
     container_name: splunk
