@@ -1,0 +1,233 @@
+<form theme="dark">
+  <label>dT - Status Report - Security</label>
+  <init>
+    <set token="dt_sr_country">*</set>
+    <set token="dt_sr_accessmode">*</set>
+    <set token="dt_sr_devicetype">*</set>
+    <set token="dt_sr_devicename">*</set>
+    <set token="dt_sr_sessionusername">*</set>
+    <set token="dt_sr_osname">*</set>
+    <set token="dt_sr_remotecontrolled">*</set>
+    <set token="dt_sr_virtualized">*</set>
+    <set token="dt_sr_antivirusstatus">*</set>
+    <set token="dt_sr_firewallstatus">*</set>
+    <set token="dt_sr_wifisecuritymode">*</set>
+    <set token="dt_sr_securitystate">*</set>
+  </init>
+  <search id="dt_sr_security">
+    <query>
+index="deviceTRUST" sourcetype="statusreport" "Country"="$dt_sr_country$" "Access Mode"="$dt_sr_accessmode$" "Device Type"="$dt_sr_devicetype$" "Device Name"="$dt_sr_devicename$" "Session User Name"="$dt_sr_sessionusername$" "OS Name"="$dt_sr_osname$" "Remote Controlled"="$dt_sr_remotecontrolled$" "Virtualized"="$dt_sr_virtualized$" "Antivirus Status"="$dt_sr_antivirusstatus$" "Firewall Status"="$dt_sr_firewallstatus$" "Wi-Fi Security Mode"="$dt_sr_wifisecuritymode$" "Security State"="$dt_sr_securitystate$"
+            | fields "Access Mode","Antivirus Name","Antivirus Status","Antivirus Signature Status","Country","Country Provider","Device Identifier","Device Name","Device Type","deviceTRUST Client","Economic Region","Firewall Name","Firewall Status","Hardware BIOS Release Date","Hardware Model","Hardware Role","Hardware Secure Boot","Hardware Vendor","Network Address Assignment","Network DHCP Server","Network DNS Server","Network DNS Suffix","Network Gateway","Network Gateway Mac","Network IP Address","Network Mac Address","Network Subnet","OS Description","OS Disk Encryption","OS Name","OS Platform","OS Release","OS Type","OS Updates","OS Version","Region Keyboard Locale","Region Locale","Remote Controlled","Remoting Client Protocol","Remoting Client Version","Secure Screen Saver","Security State","Session Date","Session User Domain","Session User Name","Timezone Offset","User Authentication","User Privileges","Virtualized","VPN Connected","Wi-Fi Security Mode"
+    </query>
+  </search>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="dt_sr_country">
+      <label>Device - Country</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Country</fieldForLabel>
+      <fieldForValue>Country</fieldForValue>
+      <search base="dt_sr_security">
+        <query>
+| fields "Country" 
+| dedup "Country"
+| sort "Country"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_accessmode">
+      <label>Device - Access Mode</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Access Mode</fieldForLabel>
+      <fieldForValue>Access Mode</fieldForValue>
+      <search base="dt_sr_security">
+        <query>
+| fields "Access Mode" 
+| dedup "Access Mode"
+| sort "Access Mode"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicetype">
+      <label>Device - Type</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <fieldForLabel>Device Type</fieldForLabel>
+      <fieldForValue>Device Type</fieldForValue>
+      <search base="dt_sr_security">
+        <query>
+| fields "Device Type" 
+| dedup "Device Type"
+| sort "Device Type"</query>
+      </search>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicename">
+      <label>Device - Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Device Name</fieldForLabel>
+      <fieldForValue>Device Name</fieldForValue>
+      <search base="dt_sr_security">
+        <query>
+| fields "Device Name" 
+| dedup "Device Name"
+| sort "Device Name"</query>
+      </search>
+    </input>
+    <input type="dropdown" token="dt_sr_sessionusername">
+      <label>Session User Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Session User Name</fieldForLabel>
+      <fieldForValue>Session User Name</fieldForValue>
+      <search base="dt_sr_security">
+        <query>
+| fields "Session User Name" 
+| dedup "Session User Name"
+| sort "Session User Name"</query>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Device - OS Name</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| top limit=5 "OS Name" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osname">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Remote Controlled</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| top limit=5 "Remote Controlled" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_remotecontrolled">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Virtualized</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| top limit=5 "Virtualized" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_virtualized">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Device - Antivirus Status</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>| top limit=5 "Antivirus Status" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_antivirusstatus">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Firewall Status</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| top limit=5 "Firewall Status" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_firewallstatus">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Wi-Fi Security Mode</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| top limit=5 "Wi-Fi Security Mode" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_wifisecuritymode">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Device - Security State</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| top limit=5 "Security State" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_securitystate">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Security State</title>
+      <chart>
+        <search base="dt_sr_security">
+          <query>
+| eval _time=strptime('Session Date', "%Y-%m-%dT%H:%M:%S.%QZ")
+| timechart count by "Security State"</query>
+        </search>
+        <option name="charting.axisTitleX.text">Session Date</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.stackMode">stacked100</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search base="dt_sr_security">
+          <query>| table "Session Date","Country","Access Mode","Device Type","Device Name","OS Name","Security State","Antivirus Name","Antivirus Status","Antivirus Signature Status","Firewall Name","Firewall Status","Remote Controlled","Secure Screen Saver","Wi-Fi Security Mode","Virtualized","Remoting Client Protocol","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="count">15</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>

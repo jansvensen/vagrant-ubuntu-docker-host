@@ -1,0 +1,10 @@
+<nav> 
+   <collection label="Dashboards">
+      <view name="dt__device_based_licensing" default="true" />
+   </collection>
+
+   <collection label="Help">
+      <a href="https://docs.devicetrust.com" target="_blank">Documentation</a>
+      <a href="https://devicetrust.com/contact-us/" target="_blank">Contact</a>
+   </collection>
+</nav>

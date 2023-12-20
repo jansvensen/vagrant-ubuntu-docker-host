@@ -1,0 +1,230 @@
+<form theme="dark">
+  <label>dT - Device Based Licensing</label>
+  <init>
+    <set token="dt_dbl_application">*</set>
+    <set token="dt_dbl_applicationuser">*</set>
+    <set token="dt_dbl_devicename">*</set>
+    <set token="dt_dbl_licensedby">*</set>
+    <set token="dt_dbl_licensedstatus">*</set>
+    <set token="dt_dbl_sessionuserdomain">*</set>
+    <set token="dt_dbl_sessionusername">*</set>
+  </init>
+  <search id="dt_dbl">
+    <query>
+     index="deviceTRUST" sourcetype="devicebasedlicensing" "Application"="$dt_dbl_application$" "Device Name"="$dt_dbl_devicename$" "Session User Domain"="$dt_dbl_sessionuserdomain$" "Session User Name"="$dt_dbl_sessionusername$" "Licensed Status"="$dt_dbl_licensedstatus$" "Licensed By"="$dt_dbl_licensedby$" "Application User"="$dt_dbl_applicationuser$"
+      | fields "Application","Application User","Device BIOS Serial Number","Device Name","Device OS ID","Licensed By","Licensed Status","Session Date","Session User Domain","Session User Name","Dession Date"
+      | eval sortfield=(Application+" "+'Device Name')
+      | sort - "Session Date"
+      | dedup sortfield
+    </query>
+  </search>
+  <fieldset submitButton="false" autoRun="false">
+    <input type="dropdown" token="dt_dbl_application" searchWhenChanged="true">
+      <label>Application</label>
+      <fieldForLabel>Application</fieldForLabel>
+      <fieldForValue>Application</fieldForValue>
+      <search base="dt_dbl">
+        <query>
+          | fields "Application" 
+          | dedup "Application"
+          | sort "Application"
+        </query>
+      </search>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_dbl_devicename">
+      <label>Device Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Device Name</fieldForLabel>
+      <fieldForValue>Device Name</fieldForValue>
+      <search base="dt_dbl">
+        <query>
+          | fields "Device Name" 
+          | dedup "Device Name"
+          | sort "Device Name"</query>
+      </search>
+    </input>
+    <input type="dropdown" token="dt_dbl_sessionuserdomain">
+      <label>Session User Domain</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Session User Domain</fieldForLabel>
+      <fieldForValue>Session User Domain</fieldForValue>
+      <search base="dt_dbl">
+        <query>| fields "Session User Domain" 
+          | dedup "Session User Domain"
+          | sort "Session User Domain"</query>
+      </search>
+    </input>
+    <input type="dropdown" token="dt_dbl_sessionusername">
+      <label>Session User Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Session User Name</fieldForLabel>
+      <fieldForValue>Session User Name</fieldForValue>
+      <search base="dt_dbl">
+        <query>
+          | fields "Session User Name" 
+          | dedup "Session User Name"
+          | sort "Session User Name"</query>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Licensed Status</title>
+      <chart>
+        <search base="dt_dbl">
+          <query>| top limit=5 "Licensed Status" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_dbl_licensedstatus">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Licensed By</title>
+      <chart>
+        <search base="dt_dbl">
+          <query>
+          | top limit=5 "Licensed By" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_dbl_licensedby">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Application User</title>
+      <chart>
+        <search base="dt_dbl">
+          <query>| top limit=5 "Application User" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_dbl_applicationuser">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Total Devices</title>
+      <single>
+        <search base="dt_dbl">
+          <query>| stats dc(Device Name)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Licensed Devices</title>
+      <single>
+        <search base="dt_dbl">
+          <query>| where ('Licensed Status' LIKE "Licensed%")
+| stats dc(Device Name)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">114</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Not Licensed Devices</title>
+      <single>
+        <search base="dt_dbl">
+          <query>| where ('Licensed Status' LIKE "Not licensed%")
+| stats dc(Device Name)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">113</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Total Users</title>
+      <single>
+        <search base="dt_dbl">
+          <query>| stats dc(Session User Name)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Application Users</title>
+      <single>
+        <search base="dt_dbl">
+          <query>| where ('Application User' = "True")
+| stats dc(Session User Name)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Devices - All</title>
+      <table>
+        <search base="dt_dbl">
+          <query>| table "Session Date","Application","Device Name","Licensed Status","Licensed By","Device BIOS Serial Number","Device OS ID","Application User","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Devices - No access within the last 90 days</title>
+      <table>
+        <search base="dt_dbl">
+          <query>| eval sd=strptime('Session Date', "%Y-%m-%dT%H:%M:%S.%QZ")
+| eval now = strftime(now(),"%Y-%m-%dT%H:%M:%S.%QZ")
+| eval now = strptime(now,"%Y-%m-%dT%H:%M:%S.%QZ")
+| eval days=(now - sd)/86400
+| where days &gt; 90
+| table "Session Date","Application","Device Name","Licensed Status","Licensed By","Device BIOS Serial Number","Device OS ID","Application User","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Devices - No access within the last 365 days</title>
+      <table>
+        <search base="dt_dbl">
+          <query>| eval sd=strptime('Session Date', "%Y-%m-%dT%H:%M:%S.%QZ")
+| eval now = strftime(now(),"%Y-%m-%dT%H:%M:%S.%QZ")
+| eval now = strptime(now,"%Y-%m-%dT%H:%M:%S.%QZ")
+| eval days=(now - sd)/86400
+| where days &gt; 365
+| table "Session Date","Application","Device Name","Licensed Status","Licensed By","Device BIOS Serial Number","Device OS ID","Application User","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>

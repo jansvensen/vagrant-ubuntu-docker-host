@@ -1,0 +1,211 @@
+<form theme="dark">
+  <label>dT - Status Report - Hardware</label>
+  <init>
+    <set token="dt_sr_country">*</set>
+    <set token="dt_sr_accessmode">*</set>
+    <set token="dt_sr_devicetype">*</set>
+    <set token="dt_sr_devicename">*</set>
+    <set token="dt_sr_sessionusername">*</set>
+    <set token="dt_sr_osname">*</set>
+    <set token="dt_sr_hardwarerole">*</set>
+    <set token="dt_sr_hardwarevendor">*</set>
+    <set token="dt_sr_hardwaremodel">*</set>
+    <set token="dt_sr_bioreleasedate">*</set>
+    <set token="dt_sr_secureboot">*</set>
+  </init>
+  <search id="dt_sr_hardware">
+    <query>
+index="deviceTRUST" sourcetype="statusreport" "Country"="$dt_sr_country$" "Access Mode"="$dt_sr_accessmode$" "Device Type"="$dt_sr_devicetype$" "Device Name"="$dt_sr_devicename$" "Session User Name"="$dt_sr_sessionusername$" "OS Name"="$dt_sr_osname$" "Hardware Role"="$dt_sr_hardwarerole$" "Hardware Vendor"="$dt_sr_hardwarevendor$" "Hardware Model"="$dt_sr_hardwaremodel$" "Hardware Secure Boot"="$dt_sr_secureboot$"
+        | fields "Access Mode","Anti-Virus Name","Anti-Virus Status","Anti-Virus Timestamp","Country","Country Provider","Device Identifier","Device Name","Device Type","deviceTRUST Client","Economic Region","Firewall Name","Firewall Status","Hardware BIOS Release Date","Hardware Model","Hardware Role","Hardware Secure Boot","Hardware Vendor","Network Address Assignment","Network DHCP Server","Network DNS Server","Network DNS Suffix","Network Gateway","Network Gateway Mac","Network IP Address","Network Mac Address","Network Subnet","OS Description","OS Disk Encryption","OS Name","OS Platform","OS Release","OS Type","OS Updates","OS Version","Region Keyboard Locale","Region Locale","Remote Controlled","Remoting Client Protocol","Remoting Client Version","Secure Screen Saver","Security State","Session Date","Session User Domain","Session User Name","Timezone Offset","User Authentication","User Privileges","Virtualized","VPN Connected","Wi-Fi Security Mode"
+    </query>
+  </search>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="dt_sr_country">
+      <label>Device - Country</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Country</fieldForLabel>
+      <fieldForValue>Country</fieldForValue>
+      <search base="dt_sr_hardware">
+        <query>
+| fields "Country" 
+| dedup "Country"
+| sort "Country"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_accessmode">
+      <label>Device - Access Mode</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Access Mode</fieldForLabel>
+      <fieldForValue>Access Mode</fieldForValue>
+      <search base="dt_sr_hardware">
+        <query>
+| fields "Access Mode" 
+| dedup "Access Mode"
+| sort "Access Mode"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicetype">
+      <label>Device - Type</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <fieldForLabel>Device Type</fieldForLabel>
+      <fieldForValue>Device Type</fieldForValue>
+      <search base="dt_sr_hardware">
+        <query>
+| fields "Device Type" 
+| dedup "Device Type"
+| sort "Device Type"</query>
+      </search>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicename">
+      <label>Device - Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Device Name</fieldForLabel>
+      <fieldForValue>Device Name</fieldForValue>
+      <search base="dt_sr_hardware">
+        <query>
+| fields "Device Name" 
+| dedup "Device Name"
+| sort "Device Name"</query>
+      </search>
+    </input>
+    <input type="dropdown" token="dt_sr_sessionusername">
+      <label>Session User Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Session User Name</fieldForLabel>
+      <fieldForValue>Session User Name</fieldForValue>
+      <search base="dt_sr_hardware">
+        <query>
+| fields "Session User Name" 
+| dedup "Session User Name"
+| sort "Session User Name"</query>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Device - OS Name</title>
+      <chart>
+        <search base="dt_sr_hardware">
+          <query>
+| top limit=5 "OS Name" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osname">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Hardware Role</title>
+      <chart>
+        <search base="dt_sr_hardware">
+          <query>
+| top limit=5 "Hardware Role" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_hardwarerole">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Hardware Vendor</title>
+      <chart>
+        <search base="dt_sr_hardware">
+          <query>
+| top limit=5 "Hardware Vendor" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_hardwarevendor">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Device - Hardware Model</title>
+      <chart>
+        <search base="dt_sr_hardware">
+          <query>
+| top limit=5 "Hardware Model" useother=true
+| sort -count
+</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_hardwaremodel">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - BIOS Release Date</title>
+      <chart>
+        <search base="dt_sr_hardware">
+          <query>
+| eval hbrd=strptime('Hardware BIOS Release Date', "%Y-%m-%dT%H:%M:%S.%QZ")
+| eval days=(now()-hbrd)/86400
+| eval BIOSTimeDiff=case(
+	days &lt; 30,"Up2Date",
+	days &gt; 30 AND days &lt; 90,"Older30",
+	days &gt; 90,"Older90",
+	1=1,"No Client"
+)
+| stats count by BIOSTimeDiff</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Secure Boot</title>
+      <chart>
+        <search base="dt_sr_hardware">
+          <query>
+| top limit=5 "Hardware Secure Boot" useother=true
+| sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_secureboot">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search base="dt_sr_hardware">
+          <query>| table "Session Date",Country,"Access Mode","Device Type","Device Name","OS Name","Hardware Role","Hardware Vendor","Hardware Model","Hardware BIOS Release Date","Hardware Secure Boot","Remoting Client Protocol","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="count">15</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>

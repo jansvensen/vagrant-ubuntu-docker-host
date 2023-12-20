@@ -1,0 +1,232 @@
+<form theme="dark">
+  <label>dT - Status Report - OS</label>
+  <init>
+    <set token="dt_sr_country">*</set>
+    <set token="dt_sr_accessmode">*</set>
+    <set token="dt_sr_devicetype">*</set>
+    <set token="dt_sr_devicename">*</set>
+    <set token="dt_sr_sessionusername">*</set>
+    <set token="dt_sr_osname">*</set>
+    <set token="dt_sr_osplatform">*</set>
+    <set token="dt_sr_ostype">*</set>
+    <set token="dt_sr_osdescription">*</set>
+    <set token="dt_sr_osversion">*</set>
+    <set token="dt_sr_osrelease">*</set>
+    <set token="dt_sr_osupdates">*</set>
+    <set token="dt_sr_osdiskencryption">*</set>
+  </init>
+  <search id="dt_sr_os">
+    <query>
+index="deviceTRUST" sourcetype="statusreport" "Country"="$dt_sr_country$" "Access Mode"="$dt_sr_accessmode$" "Device Type"="$dt_sr_devicetype$" "Device Name"="$dt_sr_devicename$" "Session User Name"="$dt_sr_sessionusername$" "OS Name"="$dt_sr_osname$" "OS Platform"="$dt_sr_osplatform$" "OS Type"="$dt_sr_ostype$" "OS Description"="$dt_sr_osdescription$" "OS Version"="$dt_sr_osversion$" "OS Release"="$dt_sr_osrelease$" "OS Updates"="$dt_sr_osupdates$" "OS Disk Encryption"="$dt_sr_osdiskencryption$"
+    | fields "Access Mode","Anti-Virus Name","Anti-Virus Status","Anti-Virus Timestamp","Country","Country Provider","Device Identifier","Device Name","Device Type","deviceTRUST Client","Economic Region","Firewall Name","Firewall Status","Hardware BIOS Release Date","Hardware Model","Hardware Role","Hardware Secure Boot","Hardware Vendor","Network Address Assignment","Network DHCP Server","Network DNS Server","Network DNS Suffix","Network Gateway","Network Gateway Mac","Network IP Address","Network Mac Address","Network Subnet","OS Description","OS Disk Encryption","OS Name","OS Platform","OS Release","OS Type","OS Updates","OS Version","Region Keyboard Locale","Region Locale","Remote Controlled","Remoting Client Protocol","Remoting Client Version","Secure Screen Saver","Security State","Session Date","Session User Domain","Session User Name","Timezone Offset","User Authentication","User Privileges","Virtualized","VPN Connected","Wi-Fi Security Mode"
+  </query>
+  </search>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="dt_sr_country">
+      <label>Device - Country</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Country</fieldForLabel>
+      <fieldForValue>Country</fieldForValue>
+      <search base="dt_sr_os">
+        <query>
+| fields "Country" 
+| dedup "Country"
+| sort "Country"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_accessmode">
+      <label>Device - Access Mode</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Access Mode</fieldForLabel>
+      <fieldForValue>Access Mode</fieldForValue>
+      <search base="dt_sr_os">
+        <query>
+| fields "Access Mode" 
+| dedup "Access Mode"
+| sort "Access Mode"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicetype">
+      <label>Device - Type</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <fieldForLabel>Device Type</fieldForLabel>
+      <fieldForValue>Device Type</fieldForValue>
+      <search base="dt_sr_os">
+        <query>
+| fields "Device Type" 
+| dedup "Device Type"
+| sort "Device Type"</query>
+      </search>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicename">
+      <label>Device - Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Device Name</fieldForLabel>
+      <fieldForValue>Device Name</fieldForValue>
+      <search base="dt_sr_os">
+        <query>
+| fields "Device Name" 
+| dedup "Device Name"
+| sort "Device Name"</query>
+      </search>
+    </input>
+    <input type="dropdown" token="dt_sr_sessionusername">
+      <label>Session User Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Session User Name</fieldForLabel>
+      <fieldForValue>Session User Name</fieldForValue>
+      <search base="dt_sr_os">
+        <query>
+| fields "Session User Name" 
+| dedup "Session User Name"
+| sort "Session User Name"</query>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Device - OS Name</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Name" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osname">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - OS Platform</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Platform" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osplatform">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - OS Type</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Type" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_ostype">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - OS Description</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Description" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osdescription">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Device - OS Version</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Version" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osversion">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - OS Release</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Release" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osrelease">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - OS Update Status</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Updates" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osupdates">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - OS Disk Encrypted</title>
+      <chart>
+        <search base="dt_sr_os">
+          <query>
+| top limit=5 "OS Disk Encryption" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osdiskencryption">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search base="dt_sr_os">
+          <query>| table "Session Date","Country","Access Mode","Device Type","Device Name","OS Platform","OS Name","OS Type","OS Description","OS Release","OS Version","OS Updates","OS Disk Encryption","Remoting Client Protocol","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="count">15</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>

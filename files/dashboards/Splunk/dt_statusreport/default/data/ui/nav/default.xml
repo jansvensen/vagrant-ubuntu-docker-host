@@ -1,0 +1,19 @@
+<nav> 
+
+   <collection label="Dashboards">
+		<view name="dt__status_report__overview" default="true" />
+		<view name="dt__status_report__location" />
+		<view name="dt__status_report__network" />
+		<view name="dt__status_report__os" />
+		<view name="dt__status_report__hardware" />
+		<view name="dt__status_report__security" />
+		<view name="dt__status_report__software" />
+		<view name="dt__status_report__user" />
+   </collection>
+
+   <collection label="Help">
+      <a href="https://docs.devicetrust.com" target="_blank">Documentation</a>
+      <a href="https://devicetrust.com/contact-us/" target="_blank">Contact</a>
+   </collection>
+   
+</nav>

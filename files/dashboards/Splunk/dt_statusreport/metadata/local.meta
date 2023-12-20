@@ -1,0 +1,297 @@
+[app/install/install_source_checksum]
+version = 8.1.5
+modtime = 1634539886.091425000
+
+[props/statusreport/EVAL-Timezone%20Offset]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+version = 8.1.5
+modtime = 1634376277.376843000
+
+[props/statusreport/EVAL-Access%20Mode]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Antivirus%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Antivirus%20Status]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Antivirus%20Signature%20Status]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Country]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Country%20Provider]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Device%20Identifier]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Device%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Device%20Type]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-deviceTRUST%20Client]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Economic%20Region]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Firewall%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Firewall%20Status]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Hardware%20BIOS%20Release%20Date]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Hardware%20Model]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Hardware%20Role]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Hardware%20Secure%20Boot]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Hardware%20Vendor]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20Address%20Assignment]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20DHCP%20Server]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20DNS%20Server]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20DNS%20Suffix]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20Gateway]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20Gateway%20Mac]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20IP%20Address]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20Mac%20Address]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Network%20Subnet]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Description]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Disk%20Encryption]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Platform]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Release]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Type]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Updates]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-OS%20Version]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Region%20Keyboard%20Locale]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Region%20Locale]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Region%20Timezone%20Offset]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Remote%20Controlled]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Remoting%20Client%20Protocol]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Remoting%20Client%20Version]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Secure%20Screen%20Saver]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Security%20State]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Session%20Date]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Session%20User%20Domain]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Session%20User%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-User%20Authentication]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-User%20Privileges]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Virtualized]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-VPN%20Connected]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[props/statusreport/EVAL-Wi-Fi%20Security%20Mode]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+
+[views/dt__status_report__software]
+version = 8.1.5
+modtime = 1634376085.071057000
+
+[views/dt__status_report__overview]
+version = 8.1.5
+modtime = 1634375891.900988000
+
+[views/dt__status_report__location]
+version = 8.1.5
+modtime = 1634375911.988790000
+
+[views/dt__status_report__network]
+version = 8.1.5
+modtime = 1634375933.239065000
+
+[views/dt__status_report__os]
+version = 8.1.5
+modtime = 1634375954.155908000
+
+[views/dt__status_report__hardware]
+version = 8.1.5
+modtime = 1634375969.576306000
+
+[views/dt__status_report__security]
+version = 8.1.5
+modtime = 1634379426.485278000
+
+[views/dt__status_report__user]
+version = 8.1.5
+modtime = 1634376108.831552000

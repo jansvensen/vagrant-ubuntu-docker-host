@@ -1,0 +1,84 @@
+[app/install/install_source_checksum]
+version = 8.1.5
+modtime = 1634539869.731938000
+
+[props/devicebasedlicensing/EVAL-Application]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027154.121093000
+
+[props/devicebasedlicensing/EVAL-Session%20User%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027192.268280000
+
+[props/devicebasedlicensing/EVAL-Session%20User%20Domain]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027173.030325000
+
+[props/devicebasedlicensing/EVAL-Device%20BIOS%20Serial%20Number]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027202.085421000
+
+[props/devicebasedlicensing/EVAL-Application%20User]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027206.515368000
+
+[props/devicebasedlicensing/EVAL-Device%20Name]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027211.262286000
+
+[props/devicebasedlicensing/EVAL-Device%20OS%20ID]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027216.893976000
+
+[props/devicebasedlicensing/EVAL-Licensed%20By]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027221.664598000
+
+[props/devicebasedlicensing/EVAL-Licensed%20Status]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 8.1.5
+modtime = 1634027226.826850000
+
+[inputs/http%3A%2F%2Fdt]
+access = read : [ admin ], write : [ admin ]
+export = none
+owner = admin
+version = 8.1.5
+modtime = 1634029965.568001000
+
+[views/dt__device_based_licensing]
+version = 8.1.5
+modtime = 1634375854.973112000
+
+[props/devicebasedlicensing/EVAL-Session%20Date]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+version = 8.1.5
+modtime = 1634540896.461372000

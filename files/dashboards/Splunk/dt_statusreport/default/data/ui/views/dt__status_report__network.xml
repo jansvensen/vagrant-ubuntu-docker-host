@@ -1,0 +1,200 @@
+<form theme="dark">
+  <label>dT - Status Report - Network</label>
+  <init>
+    <set token="dt_sr_country">*</set>
+    <set token="dt_sr_accessmode">*</set>
+    <set token="dt_sr_devicetype">*</set>
+    <set token="dt_sr_devicename">*</set>
+    <set token="dt_sr_sessionusername">*</set>
+    <set token="dt_sr_osname">*</set>
+    <set token="dt_sr_vpnconnected">*</set>
+    <set token="dt_sr_wifisecmode">*</set>
+    <set token="dt_sr_devicesubnet">*</set>
+    <set token="dt_sr_devicegateway">*</set>
+    <set token="dt_sr_devicednssuffix">*</set>
+  </init>
+  <search id="dt_sr_network">
+    <query>
+      index="deviceTRUST" sourcetype="statusreport" "Country"="$dt_sr_country$" "Access Mode"="$dt_sr_accessmode$" "Device Type"="$dt_sr_devicetype$" "Device Name"="$dt_sr_devicename$" "Session User Name"="$dt_sr_sessionusername$" "OS Name"="$dt_sr_osname$" "VPN Connected"="$dt_sr_vpnconnected$" "Wi-Fi Security Mode"="$dt_sr_wifisecmode$" "Network Subnet"="$dt_sr_devicesubnet$" "Network Gateway"="$dt_sr_devicegateway$" "Network DNS Suffix"="$dt_sr_devicednssuffix$"
+      | fields "Access Mode","Anti-Virus Name","Anti-Virus Status","Anti-Virus Timestamp","Country","Country Provider","Device Identifier","Device Name","Device Type","deviceTRUST Client","Economic Region","Firewall Name","Firewall Status","Hardware BIOS Release Date","Hardware Model","Hardware Role","Hardware Secure Boot","Hardware Vendor","Network Address Assignment","Network DHCP Server","Network DNS Server","Network DNS Suffix","Network Gateway","Network Gateway Mac","Network IP Address","Network Mac Address","Network Subnet","OS Description","OS Disk Encryption","OS Name","OS Platform","OS Release","OS Type","OS Updates","OS Version","Region Keyboard Locale","Region Locale","Remote Controlled","Remoting Client Protocol","Remoting Client Version","Secure Screen Saver","Security State","Session Date","Session User Domain","Session User Name","Timezone Offset","User Authentication","User Privileges","Virtualized","VPN Connected","Wi-Fi Security Mode"
+    </query>
+  </search>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="dt_sr_country">
+      <label>Device - Country</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Country</fieldForLabel>
+      <fieldForValue>Country</fieldForValue>
+      <search base="dt_sr_network">
+        <query>
+| fields "Country" 
+| dedup "Country"
+| sort "Country"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_accessmode">
+      <label>Device - Access Mode</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Access Mode</fieldForLabel>
+      <fieldForValue>Access Mode</fieldForValue>
+      <search base="dt_sr_network">
+        <query>
+| fields "Access Mode" 
+| dedup "Access Mode"
+| sort "Access Mode"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicetype">
+      <label>Device - Type</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <fieldForLabel>Device Type</fieldForLabel>
+      <fieldForValue>Device Type</fieldForValue>
+      <search base="dt_sr_network">
+        <query>
+| fields "Device Type" 
+| dedup "Device Type"
+| sort "Device Type"</query>
+      </search>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="dt_sr_devicename">
+      <label>Device - Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Device Name</fieldForLabel>
+      <fieldForValue>Device Name</fieldForValue>
+      <search base="dt_sr_network">
+        <query>
+| fields "Device Name" 
+| dedup "Device Name"
+| sort "Device Name"</query>
+      </search>
+    </input>
+    <input type="dropdown" token="dt_sr_sessionusername">
+      <label>Session User Name</label>
+      <choice value="*">All</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>Session User Name</fieldForLabel>
+      <fieldForValue>Session User Name</fieldForValue>
+      <search base="dt_sr_network">
+        <query>
+| fields "Session User Name" 
+| dedup "Session User Name"
+| sort "Session User Name"</query>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Device - OS Name</title>
+      <chart>
+        <search base="dt_sr_network">
+          <query>
+| top limit=5 "OS Name" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_osname">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - VPN Connected</title>
+      <chart>
+        <search base="dt_sr_network">
+          <query>
+| top limit=5 "VPN Connected" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_vpnconnected">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - WiFi Security Mode</title>
+      <chart>
+        <search base="dt_sr_network">
+          <query>
+| top limit=5 "Wi-Fi Security Mode" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_wifisecmode">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Device - Network Subnet</title>
+      <chart>
+        <search base="dt_sr_network">
+          <query>
+| top limit=5 "Network Subnet" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_devicesubnet">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Network Gateway</title>
+      <chart>
+        <search base="dt_sr_network">
+          <query>
+| top limit=5 "Network Gateway" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_devicegateway">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <title>Device - Network DNS Suffix</title>
+      <chart>
+        <search base="dt_sr_network">
+          <query>
+| top limit=5 "Network DNS Suffix" useother=true | sort -count</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="dt_sr_devicednssuffix">$click.value$</set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search base="dt_sr_network">
+          <query>| table "Session Date",Country,"Access Mode","Device Type","Device Name","OS Name","VPN Connected","Network Address Assignment","Network IP Address","Network Mac Address","Network Subnet","Network Gateway","Network Gateway Mac","Network DNS Suffix","Network DNS Server","Network DHCP Server","Remoting Client Protocol","Session User Name","Session User Domain"</query>
+        </search>
+        <option name="count">15</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>
