@@ -1,0 +1,92 @@
+{
+  "dynamic_templates": [],
+  "properties": {
+    "ApplicationUser": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SessionUserName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SessionUserDomain": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "DeviceBIOSSerialNumber": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "DeviceOSID": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "Application": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "LicensedStatus": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "DeviceName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SessionDate": {
+      "index": true,
+      "ignore_malformed": false,
+      "store": false,
+      "type": "date",
+      "doc_values": true
+    }
+  }
+}

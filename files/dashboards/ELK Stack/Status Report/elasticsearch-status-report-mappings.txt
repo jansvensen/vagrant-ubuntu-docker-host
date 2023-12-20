@@ -1,0 +1,501 @@
+{
+  "properties": {
+    "AntivirusName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkGatewayMac": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSPlatform": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "RemoteControlled": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "UserPrivileges": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkDNSServer": {
+      "type": "keyword"
+    },
+    "FirewallName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "RegionTimezoneOffset": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "RemotingClientProtocol": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSUpdates": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSVersion": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SecureScreenSaver": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "deviceTRUSTClient": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "EconomicRegion": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "HardwareModel": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkGateway": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "HardwareRole": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "UserAuthentication": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "Virtualized": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "DeviceIdentifier": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "FirewallStatus": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "DeviceType": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SessionUserDomain": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSType": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "Wi-FiSecurityMode": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "Country": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "RemotingClientVersion": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkSubnet": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SessionUserName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "RegionLocale": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "HardwareSecureBoot": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "AntivirusStatus": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkDNSSuffix": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "RegionKeyboardLocale": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SessionDate": {
+      "index": true,
+      "ignore_malformed": true,
+      "store": false,
+      "type": "date",
+      "doc_values": true
+    },
+    "NetworkIPAddress": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "HardwareVendor": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSRelease": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSDescription": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "AntivirusSignatureStatus": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "OSDiskEncryption": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkAddressAssignment": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "VPNConnected": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "SecurityState": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkMacAddress": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "HardwareBIOSReleaseDate": {
+      "index": true,
+      "ignore_malformed": true,
+      "store": false,
+      "type": "date",
+      "doc_values": true
+    },
+    "AccessMode": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "NetworkDHCPServer": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "CountryProvider": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    },
+    "DeviceName": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "split_queries_on_whitespace": false,
+      "index_options": "docs",
+      "doc_values": true
+    }
+  }
+}
