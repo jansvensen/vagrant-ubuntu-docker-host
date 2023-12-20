@@ -20,6 +20,8 @@ services:
     environment:
       SPLUNK_PASSWORD: "ThisIsMyMagicPassword"
       SPLUNK_START_ARGS: "--accept-license"
+    volumes:
+      - "/home/vagrant/git/vagrant-ubuntu-docker-host/files/dashboards:/tmp/dashboards"
 
   # mongodb
   mongodb:
@@ -45,6 +47,7 @@ services:
         soft: -1
     volumes:
       - "es_data:/usr/share/elasticsearch/data"
+      - "/home/vagrant/git/vagrant-ubuntu-docker-host/files/dashboards:/tmp/dashboards"
     restart: "on-failure"
 
 # volumes    
